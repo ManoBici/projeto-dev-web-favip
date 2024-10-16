@@ -1,0 +1,78 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: black;
+}
+
+
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    background-color: #333;
+}
+
+header nav ul li {
+    margin: 0;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    display: block;
+}
+
+header nav ul li a:hover {
+    background-color: #555;
+}
+
+
+#slideshow {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.slide {
+    display: none;
+    padding: 50px;
+    background-color: #ddd;
+    text-align: center;
+}
+
+#destaques, #recentes {
+    margin: 20px;
+}
+
+.artigo-item, .destaque-item {
+    background-color: #f4f4f4;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+
+.dark-mode-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dark-mode-btn:hover {
+    background-color: #555;
+}
