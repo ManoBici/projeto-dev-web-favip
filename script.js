@@ -1,38 +1,39 @@
+const toggleButton = document.getElementById('toggle-dark-mode');
 
-const darkModeToggle = document.createElement('button');
-darkModeToggle.textContent = 'Modo Escuro';
-darkModeToggle.classList.add('dark-mode-btn');
-document.body.appendChild(darkModeToggle);
+// Função para aplicar o tema com base na preferência salva
+function applyTheme(theme) {
+  if (theme === 'dark') {
+    document.body.classList.add('dark-mode');
+  } else {
+    document.body.classList.remove('dark-mode');
+  }
+}
 
-darkModeToggle.addEventListener('click', function () {
-    document.body.classList.toggle('dark-mode');
-    darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? 'Modo Claro' : 'Modo Escuro';
+// Obtenha a preferência salva no localStorage
+const savedTheme = localStorage.getItem('theme') || 'light';
+applyTheme(savedTheme);
+
+// Adicione o evento de clique no botão
+toggleButton.addEventListener('click', () => {
+  const isDarkMode = document.body.classList.toggle('dark-mode');
+  const newTheme = isDarkMode ? 'dark' : 'light';
+  localStorage.setItem('theme', newTheme);
 });
+const form = document.getElementById('emailForm');
+    const savedEmailDisplay = document.getElementById('savedEmail');
 
-
-let slideIndex = 0;
-showSlides();
-
-function showSlides() {
-    const slides = document.querySelectorAll('.slide');
-    for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = 'none';
+    // Mostrar o e-mail salvo (se existir)
+    const savedEmail = localStorage.getItem('email');
+    if (savedEmail) {
+      savedEmailDisplay.textContent = `E-mail salvo: ${savedEmail}`;
     }
-    slideIndex++;
-    if (slideIndex > slides.length) {
-        slideIndex = 1;
-    }
-    slides[slideIndex - 1].style.display = 'block';
-    setTimeout(showSlides, 3000); 
-}
 
-// Validação de formulário
-function validateForm() {
-    const name = document.forms["contactForm"]["name"].value;
-    const email = document.forms["contactForm"]["email"].value;
-    if (name == "" || email == "") {
-        alert("Nome e Email são obrigatórios!");
-        return false;
-    }
-    return true;
-}
+    // Salvar o e-mail ao enviar o formulário
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const email = form.email.value;
+
+      localStorage.setItem('email', email);
+      savedEmailDisplay.textContent = `E-mail salvo: ${email}`;
+      alert('E-mail salvo com sucesso!');
+    });
